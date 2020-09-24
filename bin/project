@@ -1,0 +1,9 @@
+#!/usr/bin/env lua
+
+setmetatable(_G, nil)
+
+pcall(require, "luarocks.loader")
+
+package.path = (os.getenv("PROJECT_LUA_PATH_OVERRIDE") or "") .. "./?.lua;./?/init.lua;" .. package.path
+
+require("project.cmd.init")(arg)
